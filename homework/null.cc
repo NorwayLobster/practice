@@ -7,11 +7,17 @@
 #include <iostream>
 using std::cout;
 using std::endl;
+using std::string;
+//using std::bool;
 int main(void)
 {
-	bool*p=NULL;
+//	bool*p=NULL;
+//	char *p="hello";
+	string s="hello";
+	int a=10;
 	//const char *p=NULL;
-	cout<<"null\n"<<p<<endl;
+	cout<<"&s=\n"<<&s<<endl;
+	cout<<"&a=\n"<<&a<<endl;
 	cout<<"hello"<<endl;
 	return 0;
 }
