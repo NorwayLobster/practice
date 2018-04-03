@@ -26,6 +26,11 @@ public:
 	~String();
 	void print();
 	void printRef();
+	//String * c_str(); 
+	char * c_str() const; 
+	//char * c_str(); 
+	//size_t size();
+	size_t size() const;
 private:
 	char*_ptr;
 	//int refCount;
@@ -132,6 +137,19 @@ void String::printRef()
 	cout<<"refcount="<<*(int*)(_ptr-4)<<endl;
 
 }
+//String * String::c_str()
+char* String::c_str() const
+//char* String::c_str()
+{
+	//return this;
+	return _ptr;
+}
+
+size_t String::size() const
+//size_t String::size()
+{
+	return strlen(_ptr);
+}
 int main(void)
 {
 	String s;
@@ -162,6 +180,12 @@ int main(void)
 	cout<<s3<<endl;
 	s3.printRef();
 	s1.printRef();
+	cout<<"-----------------"<<endl;
+	cout<<s2.size()<<endl;
+	cout<<s2.c_str()<<endl;
+	cout<<"-----------------"<<endl;
+	cout<<s3.size()<<endl;
+	cout<<s3.c_str()<<endl;
 	return 0;
 }
 		
