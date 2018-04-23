@@ -33,22 +33,32 @@ bool TaskQueue::empty() const
 void TaskQueue::push(TaskQueue::Product product)
 {
 	MutexLockGuard mlg(_mutex);
-	while(full()) // 使用while是为了防止异常唤醒的情况
+	if(full())	
+	//while(full()) // 使用while是为了防止异常唤醒的情况
 	{
+		cout<<"sleep on condtion _notFull"<<endl;
 		_notFull.wait();
+		cout<<"wakeup on condtion _notFull"<<endl;
 	}
 
+	cout<<"before _que.push(product)"<<endl;
 	_que.push(product);
+	cout<<"before _notEmpty.notify()"<<endl;
 	_notEmpty.notify();
+	cout<<"after _notEmpty.notify()"<<endl;
 }
 
 TaskQueue::Product TaskQueue::pop()
 {
 	MutexLockGuard mlg(_mutex);	
-	while(empty())
+	if(empty())
+	//while(empty())
 	{
+		cout<<"sleep on condtion _notEmpty"<<endl;
 		_notEmpty.wait();
+		cout<<"wakeup on condtion _notEmpty"<<endl;
 	}
+
 
 	Product product = _que.front();
 	_que.pop();

@@ -24,12 +24,13 @@ public:
 	{
 		::srand(::time(NULL));
 		//int cnt = 20;
-		///while(cnt--)
-		while(true)
+		int cnt = 10;
+		while(cnt--)
+		//while(true)
 		{
 			int number = ::rand() % 100;
 			cout << "> " << pthread_self() << " produce a number = " << number << endl;
-			taskque.push(number);
+			taskque.push(number);//临界资源
 			::sleep(1);
 		}
 	}
@@ -42,7 +43,7 @@ public:
 	{
 		while(true)
 		{
-			int number = taskque.pop();
+			int number = taskque.pop();//临界资源
 			cout << pthread_self() << " consume a number : " << number <<endl;
 			::sleep(2);
 		}

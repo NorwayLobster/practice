@@ -35,7 +35,9 @@ void TaskQueue::push(TaskQueue::Product product)
 	MutexLockGuard mlg(_mutex);
 	while(full()) // 使用while是为了防止异常唤醒的情况
 	{
+		cout<<"before _notFull"<<endl;
 		_notFull.wait();
+		cout<<"_notFull"<<endl;
 	}
 
 	_que.push(product);
@@ -47,7 +49,9 @@ TaskQueue::Product TaskQueue::pop()
 	MutexLockGuard mlg(_mutex);	
 	while(empty())
 	{
+		cout<<"before _notEmpty"<<endl;
 		_notEmpty.wait();
+		cout<<"after_notEmpty"<<endl;
 	}
 
 	Product product = _que.front();

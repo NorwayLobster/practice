@@ -24,7 +24,7 @@ public:
 	WorkerThread(Threadpool & threadpool)
 	: _threadpool(threadpool)
 	{
-		std::cout << "WorkerThread()" << std::endl;
+		std::cout << "ctor WorkerThread()" << std::endl;
 	}
 
 	~WorkerThread()

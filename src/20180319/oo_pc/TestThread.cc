@@ -39,8 +39,8 @@ private:
 		{
 			int number = ::rand() % 100;
 			cout << "> " << pthread_self() << " produce a number = " << number << endl;
-			_taskque.push(number);
-			::sleep(1);
+			_taskque.push(number);//here number is product(i.e. task that the workthread will do ) in the taskqueue
+			::sleep(2);
 		}
 	}
 
