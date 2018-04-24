@@ -42,6 +42,7 @@ int main(void)
 //	ss<<"hello"<<"world"<<endl;
 	cout<<ss.str()<<endl;
 	cout<<"--------------"<<endl;
+#if 1
 	ss>>word3>>word4;
 	cout<<"ss.good():"<<ss.good()<<endl;
 	cout<<"ss.eof():"<<ss.eof()<<endl;
@@ -62,12 +63,15 @@ int main(void)
 	cout<<"ss.bad():"<<ss.bad()<<endl;
 	cout<<"ss.fail():"<<ss.fail()<<endl;
 	cout<<"ss.tellg:"<<ss.tellg()<<endl;
-//	ss>>word3>>word4>>endl;
-//	cout<<"ss.good():"<<ss.good()<<endl;
-//	cout<<"ss.eof():"<<ss.eof()<<endl;
-//	cout<<"ss.bad():"<<ss.bad()<<endl;
-//	cout<<"ss.fail():"<<ss.fail()<<endl;
-	
+	cout<<"--------------"<<endl;
+#if 0
+	ss>>word3>>word4;
+	cout<<"ss.good():"<<ss.good()<<endl;
+	cout<<"ss.eof():"<<ss.eof()<<endl;
+	cout<<"ss.bad():"<<ss.bad()<<endl;
+	cout<<"ss.fail():"<<ss.fail()<<endl;
+#endif
+
 	cout<<"3:"<<word3<<endl;
 	cout<<"4:"<<word4<<endl;
 	cout<<"--------------"<<endl;
@@ -76,6 +80,17 @@ int main(void)
 	//ss<<" i am cheng"<<" wang"<<" ";
 	cout<<"str():"<<ss.str()<<endl;
 	cout<<"ss.good():"<<ss.good()<<endl;
+	cout<<"--------------"<<endl;
+
 	ss>>word5>>word6;
+	cout<<"5:"<<word5<<endl;
+	cout<<"6:"<<word6<<endl;
+	cout<<"ss.good():"<<ss.good()<<endl;
+	cout<<"ss.eof():"<<ss.eof()<<endl;
+	cout<<"ss.bad():"<<ss.bad()<<endl;
+	cout<<"ss.fail():"<<ss.fail()<<endl;
+	cout<<"ss.tellg:"<<ss.tellg()<<endl;
+	cout<<"--------------"<<endl;
+#endif
 
 }

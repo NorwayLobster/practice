@@ -16,10 +16,13 @@ using std::fstream;
 using std::stringstream;
 int main(void)
 {
-	fstream fs("test");
+	fstream fs("file.txt");
 	stringstream ss;
-	string line;
+	string line,line1;
 	getline(fs,line);
+	fs>>line1;
+	cout<<line<<endl;
+	cout<<line1<<endl;
 //	ss<<line;
 	ss<<"hello"<<" world";
 	cout<<ss.good()<<endl;
