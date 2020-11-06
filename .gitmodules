@@ -1,3 +1,6 @@
 [submodule "3pp/my-thread"]
 	path = 3pp/my-thread
 	url = git@github.com:NorwayLobster/myThread.git
+[submodule "3pp/repo-for-test"]
+	path = 3pp/repo-for-test
+	url = git@github.com:NorwayLobster/repo-for-test.git
