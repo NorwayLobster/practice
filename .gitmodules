@@ -1,0 +1,3 @@
+[submodule "3pp/my-thread"]
+	path = 3pp/my-thread
+	url = git@github.com:NorwayLobster/myThread.git
