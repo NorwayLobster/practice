@@ -1,0 +1,10 @@
+syntax = "proto3";
+package Search; 
+message SearchResult{
+	string query = 1;
+	int32 page_number = 2;
+	int32 result_per_page = 3;
+	int32     id = 4;  // ID 
+	string    str = 5;  // str 
+	int32     opt = 6;  //optional field 
+}

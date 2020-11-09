@@ -1,0 +1,8 @@
+自动释放方法： 2种
+		1. 内嵌类autoRelease + 其静态对象
+		2. atexit() : linux平台
+创建时的多线程安全:
+			1. lazy mode: 加mutext lock
+			2. eager mode: 提前创建好
+			3. lazy mode:  pthread_once: linux平台
+

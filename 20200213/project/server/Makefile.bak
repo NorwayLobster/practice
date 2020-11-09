@@ -1,0 +1,11 @@
+SOURCES:=$(wildcard *.cc)
+OBJECTS:=$(patsubst %.cc,%.o,$(SOURCES))
+CXXFLAGS:=-g -Wall
+ELF:=main
+LD_LIBRARY_PATH:=/home/cheng/20200130/lib*.so/lib
+$(ELF):$(OBJECTS)
+	$(CXX)  $^ -L $(LD_LIBRARY_PATH) -lcheng -Wl,-rpath=$(LD_LIBRARY_PATH) -o $@ 
+main.o:main.cc
+	$(CXX) $(CXXFLAGS) -c $^  -I include -I ../lib*.so/include  -o $@
+clean:
+	rm -rf $(OBJECTS) $(ELF)

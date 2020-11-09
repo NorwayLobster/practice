@@ -1,0 +1,10 @@
+var:=main.o add.o
+ELF:=main
+$(ELF):$(var)
+	g++ $^ -o $@ 
+main.o:main.cc 
+	g++ -c $^  -I include -o $@ 
+add.o:add.cc
+	g++ -c $^ -o  $@
+clean:
+	rm -rf $(var) $(ELF)

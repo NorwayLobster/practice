@@ -1,0 +1,74 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Acceptor	Acceptor.cc	/^Acceptor::Acceptor(const InetAddress&inetAddr,const Socket&sock)$/;"	f	class:Acceptor
+Acceptor	Acceptor.hpp	/^class Acceptor{$/;"	c
+InetAddress	InetAddress.cc	/^InetAddress::InetAddress(const string &n_ip,unsigned int n_port){$/;"	f	class:InetAddress
+InetAddress	InetAddress.cc	/^InetAddress::InetAddress(const struct sockaddr_in& addr)$/;"	f	class:InetAddress
+InetAddress	InetAddress.cc	/^InetAddress::InetAddress(unsigned int n_port){$/;"	f	class:InetAddress
+InetAddress	InetAddress.hpp	/^class InetAddress{$/;"	c
+Socket	Socket.cc	/^Socket::Socket()$/;"	f	class:Socket
+Socket	Socket.cc	/^Socket::Socket(int fd)$/;"	f	class:Socket
+Socket	Socket.hpp	/^class Socket{$/;"	c
+SocketIO	SocketIO.cc	/^SocketIO::SocketIO(int fd)$/;"	f	class:SocketIO
+SocketIO	SocketIO.hpp	/^class SocketIO{$/;"	c
+TcpConnection	TcpConnection.cc	/^TcpConnection::TcpConnection(int sockfd)$/;"	f	class:TcpConnection
+TcpConnection	TcpConnection.hpp	/^class TcpConnection{$/;"	c
+TcpConnectionCallback	TcpConnection.hpp	/^		typedef std::function<void (TcpConnectionSharedPtr&)> TcpConnectionCallback;$/;"	t	class:TcpConnection
+TcpConnectionSharedPtr	TcpConnection.hpp	/^		typedef std::shared_ptr<TcpConnection> TcpConnectionSharedPtr;$/;"	t	class:TcpConnection
+__Acceptor__HPP__	Acceptor.hpp	8;"	d
+__Inet__Address_HPP__	InetAddress.hpp	7;"	d
+__Socket_HPP__	Socket.hpp	7;"	d
+__Socket_IO_HPP__	SocketIO.hpp	7;"	d
+__Socket_Utilities__HPP__	SocketUtilities.hpp	8;"	d
+__Tcp_Connection_HPP__	TcpConnection.hpp	8;"	d
+_addr	InetAddress.hpp	/^		struct sockaddr_in _addr;$/;"	m	class:InetAddress	typeref:struct:InetAddress::sockaddr_in
+_inetAddr	Acceptor.hpp	/^		InetAddress _inetAddr;$/;"	m	class:Acceptor
+_isShutDownWrite	TcpConnection.hpp	/^		bool _isShutDownWrite;$/;"	m	class:TcpConnection
+_listenSock	Acceptor.hpp	/^		Socket _listenSock;$/;"	m	class:Acceptor
+_localInetAddr	TcpConnection.hpp	/^		const InetAddress _localInetAddr;$/;"	m	class:TcpConnection
+_onCloseEventCb	TcpConnection.hpp	/^		TcpConnectionCallback _onCloseEventCb;$/;"	m	class:TcpConnection
+_onConnectEventCb	TcpConnection.hpp	/^		TcpConnectionCallback _onConnectEventCb;$/;"	m	class:TcpConnection
+_onMessageEventCb	TcpConnection.hpp	/^		TcpConnectionCallback _onMessageEventCb;$/;"	m	class:TcpConnection
+_peerInetAddr	TcpConnection.hpp	/^		const InetAddress _peerInetAddr;$/;"	m	class:TcpConnection
+_sock	TcpConnection.hpp	/^		Socket _sock;$/;"	m	class:TcpConnection
+_sockIO	TcpConnection.hpp	/^		SocketIO _sockIO;$/;"	m	class:TcpConnection
+_sockfd	Socket.hpp	/^		int _sockfd;$/;"	m	class:Socket
+_sockfd	SocketIO.hpp	/^		int _sockfd;$/;"	m	class:SocketIO
+accept	Acceptor.cc	/^int Acceptor::accept(){$/;"	f	class:Acceptor
+bind	Acceptor.cc	/^void Acceptor::bind(){$/;"	f	class:Acceptor
+createSocketFd	SocketUtilities.cc	/^int createSocketFd(){$/;"	f
+fd	Socket.cc	/^int Socket::fd(){$/;"	f	class:Socket
+getLocalAddrBySockFd	Socket.cc	/^InetAddress Socket::getLocalAddrBySockFd(int fd){$/;"	f	class:Socket
+getPeerAddrBySockFd	Socket.cc	/^InetAddress Socket::getPeerAddrBySockFd(int fd){$/;"	f	class:Socket
+getSockAddrPtr	InetAddress.cc	/^struct sockaddr_in * InetAddress::getSockAddrPtr(){$/;"	f	class:InetAddress
+h_port	InetAddress.cc	/^unsigned int InetAddress::h_port()const{$/;"	f	class:InetAddress
+info	TcpConnection.cc	/^string TcpConnection::info(){$/;"	f	class:TcpConnection
+ip	InetAddress.cc	/^string InetAddress::ip()const{$/;"	f	class:InetAddress
+listen	Acceptor.cc	/^void Acceptor::listen(){$/;"	f	class:Acceptor
+main	main.cc	/^int main(){$/;"	f
+main	test/testInetAddress.cc	/^int main(){$/;"	f
+main	test/testSocket.cc	/^int main(){$/;"	f
+readn	SocketIO.cc	/^size_t SocketIO::readn(char * buf,size_t num){$/;"	f	class:SocketIO
+ready	Acceptor.cc	/^void Acceptor::ready(){$/;"	f	class:Acceptor
+receive	TcpConnection.cc	/^string TcpConnection::receive(){$/;"	f	class:TcpConnection
+send	TcpConnection.cc	/^void TcpConnection::send(char * message,int len){$/;"	f	class:TcpConnection
+sendInLoop	TcpConnection.cc	/^void TcpConnection::sendInLoop(){$/;"	f	class:TcpConnection
+setNonblock	Socket.cc	/^void Socket::setNonblock(){$/;"	f	class:Socket
+setNonblocking	SocketUtilities.cc	/^void setNonblocking(int _fd){$/;"	f
+setReuseAddr	Acceptor.cc	/^void Acceptor::setReuseAddr(int on){$/;"	f	class:Acceptor
+setReusePort	Acceptor.cc	/^void Acceptor::setReusePort(int on){$/;"	f	class:Acceptor
+setTcpConnection_onCloseEventCb	TcpConnection.cc	/^void TcpConnection::setTcpConnection_onCloseEventCb(TcpConnectionCallback cb){$/;"	f	class:TcpConnection
+setTcpConnection_onConnectEventCb	TcpConnection.cc	/^void TcpConnection::setTcpConnection_onConnectEventCb(TcpConnectionCallback cb){$/;"	f	class:TcpConnection
+setTcpConnection_onMessageEventCb	TcpConnection.cc	/^void TcpConnection::setTcpConnection_onMessageEventCb(TcpConnectionCallback cb){$/;"	f	class:TcpConnection
+shutDownWrite	Socket.cc	/^void Socket::shutDownWrite(){$/;"	f	class:Socket
+shutDownWrite	TcpConnection.cc	/^void TcpConnection::shutDownWrite(){$/;"	f	class:TcpConnection
+writen	SocketIO.cc	/^size_t SocketIO::writen(char * buf,size_t num){$/;"	f	class:SocketIO
+~Acceptor	Acceptor.cc	/^Acceptor::~Acceptor(){$/;"	f	class:Acceptor
+~InetAddress	InetAddress.cc	/^InetAddress::~InetAddress(){$/;"	f	class:InetAddress
+~Socket	Socket.cc	/^Socket::~Socket(){$/;"	f	class:Socket
+~SocketIO	SocketIO.cc	/^SocketIO::~SocketIO(){$/;"	f	class:SocketIO
+~TcpConnection	TcpConnection.cc	/^TcpConnection::~TcpConnection(){$/;"	f	class:TcpConnection

@@ -1,0 +1,6 @@
+SOURCE:=$(wildcard *.cc)
+ELF:=client
+$(ELF):$(SOURCE)
+	g++ -g -Wall $^ -o $@ -std=c++11 -lcrypt -lpthread -I ../server/include
+clean:
+	rm -rf file $(ELF) 

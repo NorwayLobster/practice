@@ -1,0 +1,61 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Condition	condition.cpp	/^Condition::Condition()$/;"	f	class:Condition
+Condition	condition.hpp	/^class Condition:boost::noncopyable{$/;"	c
+Consumer	main.cpp	/^class Consumer{$/;"	c	file:
+MutexLock	mutex.cpp	/^MutexLock::MutexLock():$/;"	f	class:MutexLock
+MutexLock	mutex.h	/^class MutexLock:boost::noncopyable {$/;"	c
+MutexLockGuard	MutexLockGuard.cpp	/^MutexLockGuard::MutexLockGuard(MutexLock& mutex):$/;"	f	class:MutexLockGuard
+MutexLockGuard	MutexLockGuard.hpp	/^class MutexLockGuard{$/;"	c
+MutexLockGuard_hpp	MutexLockGuard.hpp	10;"	d
+Noncopyable	Noncopyable.h	/^class Noncopyable{$/;"	c
+Noncopyable	Noncopyable.h	7;"	d
+Producer	main.cpp	/^class Producer{$/;"	c	file:
+Thread	thread.cpp	/^Thread::Thread(ThreadCallback cb):$/;"	f	class:Thread
+Thread	thread.hpp	/^class Thread:public boost::noncopyable{$/;"	c
+__cb	thread.hpp	/^    ThreadCallback __cb;$/;"	m	class:Thread
+__cond	condition.hpp	/^    pthread_cond_t __cond;$/;"	m	class:Condition
+__isRunning	thread.hpp	/^    bool __isRunning;$/;"	m	class:Thread
+__locked	mutex.h	/^     bool __locked;$/;"	m	class:MutexLock
+__mutex	MutexLockGuard.hpp	/^    MutexLock & __mutex;$/;"	m	class:MutexLockGuard
+__mutex	mutex.h	/^    pthread_mutex_t __mutex;$/;"	m	class:MutexLock
+__mutex	taskQueue.hpp	/^    MutexLock __mutex;$/;"	m	class:taskQueue
+__notEmpty	taskQueue.hpp	/^    Condition __notEmpty;$/;"	m	class:taskQueue
+__notFull	taskQueue.hpp	/^    Condition __notFull;$/;"	m	class:taskQueue
+__pthId	thread.hpp	/^    pthread_t __pthId;$/;"	m	class:Thread
+__que	taskQueue.hpp	/^    queue<Task> __que;$/;"	m	class:taskQueue
+__queSize	taskQueue.hpp	/^    size_t __queSize;$/;"	m	class:taskQueue
+cnt	main.cpp	/^int cnt=20;$/;"	v
+condition_hpp	condition.hpp	10;"	d
+consume	main.cpp	/^    void consume(taskQueue& tq){$/;"	f	class:Consumer
+empty	taskQueue.cpp	/^bool taskQueue::empty(){$/;"	f	class:taskQueue
+full	taskQueue.cpp	/^bool taskQueue::full(){$/;"	f	class:taskQueue
+getPtr	mutex.cpp	/^pthread_mutex_t * MutexLock::getPtr(){$/;"	f	class:MutexLock
+join	thread.cpp	/^void Thread::join(){$/;"	f	class:Thread
+lock	mutex.cpp	/^void MutexLock::lock(){$/;"	f	class:MutexLock
+main	main.cpp	/^int main(int argc, const char * argv[]) {$/;"	f
+mutex_h	mutex.h	13;"	d
+notify	condition.cpp	/^void Condition::notify(){$/;"	f	class:Condition
+notify_all	condition.cpp	/^void Condition::notify_all(){$/;"	f	class:Condition
+pop	taskQueue.cpp	/^Task taskQueue::pop(){$/;"	f	class:taskQueue
+produce	main.cpp	/^    void produce(taskQueue& tq){$/;"	f	class:Producer
+push	taskQueue.cpp	/^void taskQueue::push(Task task){$/;"	f	class:taskQueue
+start	thread.cpp	/^void Thread::start(){$/;"	f	class:Thread
+state	mutex.cpp	/^void MutexLock::state(){$/;"	f	class:MutexLock
+taskQueue	taskQueue.cpp	/^taskQueue::taskQueue(size_t queSize):$/;"	f	class:taskQueue
+taskQueue	taskQueue.hpp	/^class taskQueue{$/;"	c
+taskQueue_hpp	taskQueue.hpp	10;"	d
+threadFunc	thread.cpp	/^void * Thread::threadFunc(void * arg){$/;"	f	class:Thread
+thread_hpp	thread.hpp	10;"	d
+unlock	mutex.cpp	/^void MutexLock::unlock(){$/;"	f	class:MutexLock
+wait	condition.cpp	/^void Condition::wait(MutexLock & mutex){$/;"	f	class:Condition
+wakeUp	taskQueue.cpp	/^void taskQueue::wakeUp(){};$/;"	f	class:taskQueue
+~Condition	condition.cpp	/^Condition::~Condition(){$/;"	f	class:Condition
+~MutexLock	mutex.cpp	/^MutexLock::~MutexLock()$/;"	f	class:MutexLock
+~MutexLockGuard	MutexLockGuard.cpp	/^MutexLockGuard::~MutexLockGuard(){$/;"	f	class:MutexLockGuard
+~Thread	thread.cpp	/^Thread::~Thread(){$/;"	f	class:Thread
+~taskQueue	taskQueue.cpp	/^taskQueue::~taskQueue()$/;"	f	class:taskQueue

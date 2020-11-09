@@ -1,0 +1,11 @@
+SOURCES=$(wildcard *.cc)
+OBJECTS=$(patsubst %.cc,%.o,$(SOURCES))
+CXXFLAGS:=-g -Wall -std=c++11 -lcrypt -lpthread -I ../server/include -L ../server
+LD_LIBRARY_PATH:=/home/cheng/20200130/lib*.so/lib
+ELF:=client
+$(ELF):$(OBJECTS)
+	$(CXX)  $^ -o $@ $(CXXFLAGS)
+#$(OBJECTS):$(SOURCES)
+#	$(CXX)  $(CXXFLAGS) -c $^  -o $@ 
+clean:
+	rm -rf $(OBJECTS) $(ELF)

@@ -1,0 +1,11 @@
+SOURCES=$(wildcard *.cc)
+OBJECTS:=$(patsubst %.cc,%.o,$(SOURCES))
+ELF:=main
+$(ELF):$(OBJECTS)
+	g++ $^ -o $@ 
+main.o:main.cc 
+	g++ -c $^  -I include -o $@ 
+add.o:add.cc
+	g++ -c $^ -o  $@
+clean:
+	rm -rf $(OBJECTS) $(ELF)

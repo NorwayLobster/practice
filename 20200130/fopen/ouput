@@ -1,0 +1,8 @@
+argv[1]:file
+strlen(buf):0
+sizeof(buf):128
+buf:helloworld
+
+strlen(buf):11
+ret:11
+ret:127
