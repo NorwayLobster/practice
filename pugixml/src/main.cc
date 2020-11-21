@@ -8,6 +8,7 @@
 #include <optional>
 #include <vector>
 #include <string>
+#include <boost/regex.hpp>
 #include "pugi/pugixml.hpp"
 using namespace std;
 using namespace pugi;
@@ -41,14 +42,20 @@ cout<<endl;
 		cout<<"title:"<<it->child("title").text().get()<<endl;
 	}
 	cout<<endl;
-	for(xml_node &item_node:items_node.children("item")){
+	for(xml_node &item_node:items_node.children("item")){ //range taraverse
 		cout<<"title:"<<item_node.child("title").text().get()<<endl;
 		WebPage page;
 		page._title=item_node.child("title").text().get();
 		page._link=item_node.child("link").text().get();
 		page._description=item_node.child("description").text().get();
-		cout<<"description:"<<item_node.child("description").text().get()<<endl;
-		page._content=item_node.child("content:encoded").text().get();
+		// cout<<"description:"<<item_node.child("description").text().get()<<endl;
+		const string &iContent=item_node.child("content:encoded").text().get();
+
+		//remove html tag
+		string szReg = "<.*?>";
+		boost::regex fmt(szReg);
+		page._content=boost::regex_replace(string(iContent),fmt,string(""));
+
 		page_vec.push_back(page);
 	}
 }
@@ -59,9 +66,12 @@ void encodeToXml(const string& filepath,vector<WebPage>&page_vec){
   decl.append_attribute("version") = "1.0";
   decl.append_attribute("encoding") = "UTF-8";
   pugi::xml_node webData = doc.append_child("WebPageData");
-
+	int index=0;
   for (auto& webpage : page_vec) {
     pugi::xml_node pageData = webData.append_child("page");
+    pugi::xml_node docid= pageData.append_child("docid");
+		// add docid
+    docid.text().set(to_string(index++).c_str());
     pugi::xml_node title = pageData.append_child("title");
     title.text().set(webpage._title.c_str());
     pugi::xml_node link = pageData.append_child("link");
