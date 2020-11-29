@@ -14,10 +14,71 @@ using std::merge;
 
 void generateRandomArray(vector<int> &v, int maxSize, int maxValue);
 void print(vector<int> & v);
-//int mergeSort_v1(vector<int> & v);
-int mergeSort_v1(vector<int> & v, int left, int right);
-int merge(vector<int> &v, int left, int mid, int right);
-void mergeSort(vector<int>&v,int leftIndex,int rightIndex);
+void my_copy(const vector<int>&src,vector<int>&dest,int left1,int right1,int left2);
+void mergesort(vector<int>&v,int leftIndex, int rightIndex);
+void my_merge(vector<int>&v,int left1,int right1,int left2,int right2);
+
+void implace_merge(vector<int> &v, int left,int mid, int right){ 
+
+}
+int merge(vector<int> &v, int left, int mid, int right){
+    vector<int> help(right-left+1);
+    int i=0;
+    int p=left;
+    int p1=mid+1;
+   
+    //核心部分：
+    while(p<=mid && p1<=right)
+        help[i++]= v[p]<=v[p1]? v[p++]:v[p1++];
+    
+   //下面只有一个循环得到运行
+    while(p<=mid)
+        help[i++]=v[p++];
+    while(p1<=right)
+        help[i++]=v[p1++];
+    copy(help.begin(), help.end(), v.begin()+left);
+    
+    return 0;
+}
+
+
+
+int mergeSort_v1(vector<int> & v, int left, int right)
+{
+//    if(left>right)//left 永远无法大于right，死循环，风扇起
+    if(left==right)//相等时，一个数自然有序，退出递归。
+        return 0;
+    int mid= left + ((right-left)>>1);
+    
+    //先分区sort，后merge
+    mergeSort_v1(v, left, mid);
+    mergeSort_v1(v, mid+1, right);
+    merge(v, left, mid, right);
+    return 0;
+}
+
+
+
+//使用std::merge()
+//使用std::inplace_merge()
+void mergeSort(vector<int>&v,int leftIndex,int rightIndex){
+    if(leftIndex==rightIndex){
+        return ;
+    }
+    // int midIndex=leftIndex+((rightIndex-leftIndex)>>1);
+    int midIndex=leftIndex+(rightIndex-leftIndex)/2;
+    mergeSort(v,leftIndex,midIndex);
+    mergeSort(v,midIndex+1,rightIndex);
+#if 0
+    vector<int> help(rightIndex-leftIndex+1,0);
+    std::merge(v.begin()+leftIndex, v.begin()+midIndex+1,v.begin()+midIndex+1,v.begin()+rightIndex+1, help.begin());
+    copy(help.begin(),help.end(),v.begin()+leftIndex);
+#endif
+    
+    std::inplace_merge(v.begin()+leftIndex,v.begin()+midIndex+1,v.begin()+rightIndex+1);
+//    std::inplace_merge(<#_BidirectionalIterator __first#>, <#_BidirectionalIterator __middle#>, <#_BidirectionalIterator __last#>, <#_Compare __comp#>)
+}
+
 
 int main(int argc, const char * argv[]){
     // insert code here...
@@ -38,8 +99,9 @@ int main(int argc, const char * argv[]){
 //        print(v2);
         sort(v2.begin(),v2.end());
         if(!v1.empty())//保证v1非空
-//            mergeSort_v1(v1, 0, v1.size()-1);
-            mergeSort(v1, 0, (int)v1.size()-1);
+        //    mergeSort_v1(v1, 0, v1.size()-1);
+            // mergeSort(v1, 0, (int)v1.size()-1);
+             mergesort(v1, 0, (int)v1.size()-1);
         
 //        print(v1);
 //        print(v2);
@@ -74,56 +136,61 @@ void print(vector<int> & v)
 }
 
 
-int mergeSort_v1(vector<int> & v, int left, int right)
-{
-//    if(left>right)//left 永远无法大于right，死循环，风扇起
-    if(left==right)//相等时，一个数自然有序，退出递归。
-        return 0;
-    int mid= left + ((right-left)>>1);
-    
-    //先分区sort，后merge
-    mergeSort_v1(v, left, mid);
-    mergeSort_v1(v, mid+1, right);
-    merge(v, left, mid, right);
-    return 0;
+
+
+
+
+
+//from 叽里呱啦
+
+void my_copy(const vector<int>&src,vector<int>&dest,int left1,int right1,int left2){
+	while(left1<=right1){
+		dest[left2++]=src[left1++];
+	}
 }
-
-int merge(vector<int> &v, int left, int mid, int right){
-    vector<int> help(right-left+1);
-    int i=0;
-    int p=left;
-    int p1=mid+1;
-   
-    //核心部分：
-    while(p<=mid && p1<=right)
-        help[i++]= v[p]<=v[p1]? v[p++]:v[p1++];
-    
-   //下面只有一个循环得到运行
-    while(p<=mid)
-        help[i++]=v[p++];
-    while(p1<=right)
-        help[i++]=v[p1++];
-    copy(help.begin(), help.end(), v.begin()+left);
-    
-    return 0;
-}
-
-
-//使用std::merge()
-//使用std::inplace_merge()
-void mergeSort(vector<int>&v,int leftIndex,int rightIndex){
-    if(leftIndex==rightIndex){
-        return ;
-    }
-    int midIndex=leftIndex+((rightIndex-leftIndex)>>1);
-    mergeSort(v,leftIndex,midIndex);
-    mergeSort(v,midIndex+1,rightIndex);
+void my_merge(vector<int>&v,int left1,int right1,int left2,int right2){
+	vector<int> buf(right2-left1+1,0);//space complexity, O(M)
+//	vector<int> buf(right1-left1+right2-left2+2,0);
+    int originLeft1=left1;  
+    int index=0;
+	while(left1<=right1&&left2<=right2){
+		if(v[left1]<=v[left2])	
+			buf[index++]=v[left1++];
+		else 
+			buf[index++]=v[left2++];
+	}
+	
 #if 0
-    vector<int> help(rightIndex-leftIndex+1,0);
-    std::merge(v.begin()+leftIndex, v.begin()+midIndex+1,v.begin()+midIndex+1,v.begin()+rightIndex+1, help.begin());
-    copy(help.begin(),help.end(),v.begin()+leftIndex);
+	cout<<endl<<endl;
+	for(int i=left1;i<=right2;++i)
+		cout<<v[i]<<',';
+	cout<<endl;
+	for(int j=0;j<=index;++j)
+		cout<<buf[j]<<',';
+	cout<<endl;
+
+
+	for(int i=left1;i<=right2;++i)
+		cout<<v[i]<<',';
+	cout<<endl<<endl;
 #endif
-    
-    std::inplace_merge(v.begin()+leftIndex,v.begin()+midIndex+1,v.begin()+rightIndex+1);
-//    std::inplace_merge(<#_BidirectionalIterator __first#>, <#_BidirectionalIterator __middle#>, <#_BidirectionalIterator __last#>, <#_Compare __comp#>)
+	while(left1<=right1){ buf[index++]=v[left1++]; }
+	while(left2<=right2){ buf[index++]=v[left2++]; }
+
+//fatal error:	// std::copy(buf.begin(),buf.end(),v.begin()+left1);//error: 此时的left1值已经变化 
+
+	// std::copy(buf.begin(),buf.end(),v.begin()+originLeft1);//此时的left1值已经变化
+	my_copy(buf,v,0,buf.size()-1,originLeft1);
+}
+
+
+void mergesort(vector<int>&v,int leftIndex, int rightIndex){
+	if(leftIndex==rightIndex) return ;//one element, sorted naturally
+	 int mid=leftIndex+(rightIndex-leftIndex)/2;
+	//  int mid=leftIndex+((rightIndex-leftIndex)>>1)/2;//不实用
+	 mergesort(v,leftIndex,mid);
+	 mergesort(v,mid+1,rightIndex);
+//	 std::merge(v,...)
+	 my_merge(v,leftIndex,mid,mid+1,rightIndex);
+	//  merge(v,leftIndex,mid,rightIndex);//
 }

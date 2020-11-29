@@ -13,6 +13,9 @@
 #include <utility>
 using namespace std;
 //std::partition
+int mypartition(vector<int>&v,int left,int right);
+void quicksort(vector<int>&v, int left,int right);
+void quicksort_v1(vector<int>&v, int left,int right);
 void quickSort_v1(vector<int> & v, int left, int right);
 void quickSort_v1_iteration(vector<int> & v, int left, int right);
 void quickSort_v2(vector<int> & v, int left, int right);
@@ -50,7 +53,9 @@ int main(int argc, const char * argv[]) {
 //        print(v1);
 //        print(v2);
         sort(v1.begin(),v1.end());
-        quickSort_v1_iteration(v2, 0, (int)v.size()-1);
+        // quicksort(v2, 0, (int)v.size()-1);
+        quicksort_v1(v2, 0, (int)v.size()-1);
+        // quickSort_v1_iteration(v2, 0, (int)v.size()-1);
 //        quickSort_v1(v2, 0, (int)v.size()-1);
 //        quickSort_v2(v2, 0, (int)v.size()-1);
 //        quickSort_v3(v2, 0, (int)v.size()-1);
@@ -348,4 +353,33 @@ int partition_v5(vector<int> &v, int left, int right){
         
 #endif
     return less;
+}
+
+//exercise
+int mypartition(vector<int>&v,int left,int right){
+    int pivot=v[left];
+    int boudaryIndex=left;
+    for(int i=left+1;i<=right;++i){
+        if(v[i]<pivot){
+            swap(v[++boudaryIndex],v[i]);
+        }
+    }
+    //fatal error: swap(v[left],v[++boudaryIndex]);//把大于pivot的element换过去了
+    swap(v[left],v[boudaryIndex]);//
+    return boudaryIndex;
+}
+void quicksort(vector<int>&v, int left,int right){
+   //fatal error: if(left==right) return ; why
+    if(left>=right) return ;//correct
+    int pivotIndex=mypartition(v,left,right);
+    quicksort(v,left,pivotIndex-1);////fatal error 的原因 
+    quicksort(v,pivotIndex+1,right);
+}
+
+void quicksort_v1(vector<int>&v, int left,int right){
+   //fatal error: //
+    if(left==right) return ;// why
+    int pivotIndex=mypartition(v,left,right);
+    quicksort(v,left,pivotIndex);//fatal error 的原因 
+    quicksort(v,pivotIndex+1,right);
 }
