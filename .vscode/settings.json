@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.tcc": "cpp",
+    "optional": "cpp",
+    "system_error": "cpp",
+    "regex": "cpp",
+    "ostream": "cpp"
+  },
+  "C_Cpp.default.configurationProvider": "go2sh.cmake-integration"
+}
