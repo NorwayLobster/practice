@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>9</integer>
+	<key>logs</key>
+	<dict>
+		<key>583955EF-6E74-4E84-BAE2-51B9EE6644B3</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>583955EF-6E74-4E84-BAE2-51B9EE6644B3.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>E</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>leetcode project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>comparator比较器</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build comparator比较器</string>
+			<key>timeStartedRecording</key>
+			<real>575023820.07850802</real>
+			<key>timeStoppedRecording</key>
+			<real>575023820.65274894</real>
+			<key>title</key>
+			<string>Build comparator比较器</string>
+			<key>uniqueIdentifier</key>
+			<string>583955EF-6E74-4E84-BAE2-51B9EE6644B3</string>
+		</dict>
+		<key>65F8B235-81C7-43B1-A5EC-55519BA92553</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>65F8B235-81C7-43B1-A5EC-55519BA92553.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>E</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>leetcode project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>comparator比较器</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build comparator比较器</string>
+			<key>timeStartedRecording</key>
+			<real>574174845.11397505</real>
+			<key>timeStoppedRecording</key>
+			<real>574174845.77661598</real>
+			<key>title</key>
+			<string>Build comparator比较器</string>
+			<key>uniqueIdentifier</key>
+			<string>65F8B235-81C7-43B1-A5EC-55519BA92553</string>
+		</dict>
+		<key>764D589D-C712-41BB-866B-C1BB4378BE71</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>764D589D-C712-41BB-866B-C1BB4378BE71.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>E</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>leetcode project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>comparator比较器</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build comparator比较器</string>
+			<key>timeStartedRecording</key>
+			<real>575017142.02186799</real>
+			<key>timeStoppedRecording</key>
+			<real>575017142.63916504</real>
+			<key>title</key>
+			<string>Build comparator比较器</string>
+			<key>uniqueIdentifier</key>
+			<string>764D589D-C712-41BB-866B-C1BB4378BE71</string>
+		</dict>
+		<key>E64D3690-AB3C-403E-BE31-A4F1F184A506</key>
+		<dict>
+			<key>className</key>
+			<string>IDEActivityLogSection</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>Xcode.IDEActivityLogDomainType.BuildLog</string>
+			<key>fileName</key>
+			<string>E64D3690-AB3C-403E-BE31-A4F1F184A506.xcactivitylog</string>
+			<key>highLevelStatus</key>
+			<string>S</string>
+			<key>schemeIdentifier-containerName</key>
+			<string>leetcode project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>reverseBinaryTree</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Build reverseBinaryTree</string>
+			<key>timeStartedRecording</key>
+			<real>575023826.37826896</real>
+			<key>timeStoppedRecording</key>
+			<real>575023827.10445905</real>
+			<key>title</key>
+			<string>Build reverseBinaryTree</string>
+			<key>uniqueIdentifier</key>
+			<string>E64D3690-AB3C-403E-BE31-A4F1F184A506</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
