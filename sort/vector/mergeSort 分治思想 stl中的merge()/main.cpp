@@ -18,6 +18,9 @@ void my_copy(const vector<int>&src,vector<int>&dest,int left1,int right1,int lef
 void mergesort(vector<int>&v,int leftIndex, int rightIndex);
 void my_merge(vector<int>&v,int left1,int right1,int left2,int right2);
 
+void merge20201130(vector<int>&v,int left,int mid,int right);
+void mergesort20201130 (vector<int>&v,int left,int right);
+
 void implace_merge(vector<int> &v, int left,int mid, int right){ 
 
 }
@@ -101,8 +104,8 @@ int main(int argc, const char * argv[]){
         if(!v1.empty())//保证v1非空
         //    mergeSort_v1(v1, 0, v1.size()-1);
             // mergeSort(v1, 0, (int)v1.size()-1);
-             mergesort(v1, 0, (int)v1.size()-1);
-        
+            //  mergesort(v1, 0, (int)v1.size()-1);
+            mergesort20201130(v1, 0, (int)v1.size()-1);
 //        print(v1);
 //        print(v2);
 //        cout<<endl;
@@ -194,3 +197,63 @@ void mergesort(vector<int>&v,int leftIndex, int rightIndex){
 	 my_merge(v,leftIndex,mid,mid+1,rightIndex);
 	//  merge(v,leftIndex,mid,rightIndex);//
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void merge20201130(vector<int>&v,int left,int mid,int right){
+    vector<int> help(right-left+1);
+    int p1=left;
+    int p2=mid+1; // error int p2=mid;//
+    int i=0;
+    while(p1<=mid && p2<=right){
+        help[i++]= v[p1]<v[p2] ? v[p1++]:v[p2++];
+    }
+    while(p1<=mid){
+        help[i++]=v[p1++];
+    }
+    while(p2<=right){
+        help[i++]=v[p2++];
+    }
+    copy(help.begin(),help.end(),v.begin()+left);
+}
+//20201130 exercise
+void mergesort20201130 (vector<int>&v,int left,int right){
+    if(left>=right) return;
+    int mid=left+(right-left)/2;
+    mergesort20201130 (v,left,mid);
+    mergesort20201130 (v,mid+1,right);
+    merge20201130 (v,left,mid,right);
+} 

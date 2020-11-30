@@ -22,6 +22,8 @@ void bubbleSort_5(vector<int> & v);
 void bubbleSort_6(vector<int> & v);
 void bubble_sort(vector<int> & v);
 void print(const vector<int> &);
+void bubblesort20201130(vector<int>&v);
+
 int main(int argc, const char * argv[]) {
     //    srand(time(NULL));
     srand((unsigned int)time(NULL));
@@ -54,7 +56,8 @@ int main(int argc, const char * argv[]) {
         //        bubbleSort_4(v2);
         //        bubbleSort_5(v2);
 //        bubbleSort_6(v2);
-        bubble_sort(v2);
+        // bubble_sort(v2);
+        bubblesort20201130(v2);
         printf("after v2:");
         print(v2);
         for(int i=0;i<v1.size();++i){
@@ -261,3 +264,19 @@ void bubbleSort_6(vector<int> & v){
 }
 
 
+
+///exercise 20201130
+void bubblesort20201130(vector<int>&v){
+    int len=v.size();
+    for(int i=len-1;i>=0;--i){
+        bool sorted=true;
+        for(int j=1;j<=i;++j){
+            if(v[j-1]<v[j]){
+                sorted=false;
+                swap(v[j-1],v[j]);
+            }
+        }
+        if(sorted)
+            break;
+    }
+}

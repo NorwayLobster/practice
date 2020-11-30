@@ -1,3 +1,11 @@
+/*
+ * @Author: your name
+ * @Date: 2020-11-29 16:27:06
+ * @LastEditTime: 2020-11-29 23:23:03
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /practice/sort/vector/heapSort/heapsort叽里呱啦.cc
+ */
  ///
  /// @file    test.cc
  /// @author  ChengWANG(cheng.wang.801@gmail.com)
@@ -23,7 +31,7 @@ void percolateDown(vector<int> &v,int parentIndex,int len){
 }
 //build a max 2 heap
 void my_make_heap(vector<int>&v){
-	for(int i=v.size()/2+1;i>=0;i--){
+	for(int i=v.size()/2+1;i>=0;i--){//自下而上的构建//起点
 		percolateDown(v,i,v.size());
 	}
 }

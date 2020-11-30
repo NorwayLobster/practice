@@ -22,6 +22,7 @@ int selectSort_v3(vector<int> & v);
 void select_20200501(vector<int>&);
 void select_20200501_v1(vector<int>&);
 void selectionSort(vector<int>&v);
+void selectionsort20201130(vector<int>&v);
 
 int main(int argc, const char * argv[]) {
     // insert code here...
@@ -49,7 +50,8 @@ int main(int argc, const char * argv[]) {
 //                selectSort_v3(v1);
         // select_20200501_v1(v1);
         // select_20200501_v1(v1);
-        selectionSort(v1);
+        // selectionSort(v1);
+        selectionsort20201130(v1);
 //        select_20200501(v1);
                 print(v2);
                 print(v1);
@@ -176,6 +178,57 @@ void selectionSort(vector<int>&v){
     for(int i=0;i<len;++i){
         int minIndex=i;
         for(int j=i;j<len;++j){
+            if(v[j]<v[minIndex]){
+                minIndex=j;
+            }
+        }
+        swap(v[i],v[minIndex]);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//20201130 exercise
+void selectionsort20201130(vector<int>&v){
+    int len=v.size();
+    for(int i=0;i<len;++i){
+        int minIndex=i;
+        for(int j=i+1;j<len;++j){
             if(v[j]<v[minIndex]){
                 minIndex=j;
             }

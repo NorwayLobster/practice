@@ -24,60 +24,10 @@ int heapSort_v4(vector<int> & v);
 int heapSort_v5(vector<int> & v);
 int heapSort_v6(vector<int> & v);
 
-
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, heapSorting!\n";
-    int testTime = 10;
-    int maxSize = 20;
-    int maxValue = 1000;
-    vector<int> v;
-    v.reserve(maxSize);
-    bool succeed = true;
-    srand((unsigned)time(NULL));
-    for (int i = 0; i < testTime; i++) {
-        v.clear();//用完后每次都要清理
-        generateRandomArray(v, maxSize, maxValue);
-        vector<int> v1(v);
-        vector<int> v2(v);
-        print(v1);
-        print(v2);
-        sort(v2.begin(),v2.end());
-        //                heapSort_v6(v1);
-        heapSort_v5(v1);
-//                heapSort_v4(v1);///still error, no time to debug, 20190306
-//                heapSort_v3(v1);
-//                heapSort_v2(v1);
-//                heapSort_v1(v1);
-        print(v1);
-        print(v2);
-        cout<<endl;
-        if (!equal(v1.begin(), v1.end(), v2.begin())){
-            //        if (v1!=v2){
-            succeed = false;
-            print(v1);
-            print(v2);
-            //            cout<<endl;
-            break;
-        }
-        //            cout<<endl;
-    }
-    cout<<(succeed ? "Nice!" : "Fucking fucked!");
-    cout<<endl;
-    
-    return 0;
-}
-
-void generateRandomArray(vector<int> &v, int maxSize, int maxValue){
-    for(int i = 0; i < maxSize;i++ )
-        v.push_back(rand()%(maxValue-10)+10);
-}
-
-void print(vector<int> & v)
-{
-    copy(v.begin(), v.end(), ostream_iterator<int> (cout," "));
-    std::cout << '\n';
-}
+void percolateDown202021130(vector<int>&v,int partentIndex, int rightIndex);
+void make_max_heap(vector<int>&v);
+void sort_heap(vector<int>&v);
+void heapsort(vector<int>&v);
 
 
 void percolateDown(vector<int> & v, int index, int heapSize){
@@ -157,7 +107,7 @@ int heapSort_v2(vector<int> & v)
     return 0;
 }
 
-//stl: make_heap建堆， sort_heap是数组v变得的有序
+//stl: make_heap建堆， sort_heap使数组v变得的有序
 int heapSort_v3(vector<int> & v)
 {
     if(v.empty()) return 0;
@@ -170,8 +120,7 @@ int heapSort_v3(vector<int> & v)
 //push_heap把新插入到vector尾部的一个元素，调整融入进heap里, 即插入位于位置 last-1 的元素到范围 [first, last-1) 所定义的最大堆中， [first, last-1) i.e.  [first, last-2]
 //pop_heap把堆顶元素pop出，并放到vector末尾，并且，之前的元素一次往前更近一位，并恢复堆的性质
 //即，交换在位置 first 的值和在位置 last-1 的值，并令子范围 [first, last-1) 变为最大堆
-int heapSort_v4(vector<int> & v)
-{
+int heapSort_v4(vector<int> & v){
     if(v.empty()) return 0;
 //    for(int i=0;i<(int)v.size();++i)
 //       push_heap(v,v+i);
@@ -224,3 +173,104 @@ int heapSort_v6(vector<int> & v)
 
 
 
+
+
+int main(int argc, const char * argv[]) {
+    // insert code here...
+    std::cout << "Hello, heapSorting!\n";
+    int testTime = 10;
+    int maxSize = 20;
+    int maxValue = 1000;
+    vector<int> v;
+    v.reserve(maxSize);
+    bool succeed = true;
+    srand((unsigned)time(NULL));
+    for (int i = 0; i < testTime; i++) {
+        v.clear();//用完后每次都要清理
+        generateRandomArray(v, maxSize, maxValue);
+        vector<int> v1(v);
+        vector<int> v2(v);
+        print(v1);
+        print(v2);
+        sort(v2.begin(),v2.end());
+        //                heapSort_v6(v1);
+        // heapSort_v5(v1);
+        heapsort(v1);
+//                heapSort_v4(v1);///still error, no time to debug, 20190306
+//                heapSort_v3(v1);
+//                heapSort_v2(v1);
+//                heapSort_v1(v1);
+        print(v1);
+        print(v2);
+        cout<<endl;
+        if (!equal(v1.begin(), v1.end(), v2.begin())){
+            //        if (v1!=v2){
+            succeed = false;
+            print(v1);
+            print(v2);
+            //            cout<<endl;
+            break;
+        }
+        //            cout<<endl;
+    }
+    cout<<(succeed ? "Nice!" : "Fucking fucked!");
+    cout<<endl;
+    
+    return 0;
+}
+
+void generateRandomArray(vector<int> &v, int maxSize, int maxValue){
+    for(int i = 0; i < maxSize;i++ )
+        v.push_back(rand()%(maxValue-10)+10);
+}
+
+void print(vector<int> & v)
+{
+    copy(v.begin(), v.end(), ostream_iterator<int> (cout," "));
+    std::cout << '\n';
+}
+
+
+
+
+//exercise 202021130
+
+void percolateDown202021130(vector<int>&v,int partentIndex, int rightIndex){
+    // int len=v.size();
+    int childrenIndex=2*partentIndex+1;
+    while(childrenIndex<=rightIndex){
+        if(childrenIndex+1<=rightIndex&& v[childrenIndex]<v[childrenIndex+1]){
+            childrenIndex++;
+        }
+        if(v[childrenIndex]>v[partentIndex]){
+            swap(v[childrenIndex],v[partentIndex]);
+        }
+
+        partentIndex=childrenIndex;//do not miss this
+        childrenIndex=2*partentIndex+1;
+    }
+}
+
+void make_max_heap(vector<int>&v){
+    int len=v.size();
+    for(int i=len/2+1;i>=0;--i){
+    // for(int i=len/2+1;i>0;--i){//bug
+    // for(int i=len/2+1;i>0;++i){//fatal error:
+        percolateDown202021130(v,i,len-1);
+    }
+}
+
+void sort_heap(vector<int>&v){
+    int len=v.size();
+    // for(int i =len-1;i>1;--i){//error:
+    for(int i =len-1;i>0;--i){
+        swap(v[0],v[i]);
+        percolateDown202021130(v,0,i-1);
+    }
+}
+
+void heapsort(vector<int>&v){
+    // make_heap(v.begin(),v.end());
+    make_max_heap(v);//have bugs
+    sort_heap(v);//correct
+}

@@ -17,6 +17,9 @@ int insertSort_v2(vector<int> & v);
 void insertSort(vector<int> &v,int beginIndex,int endIndex);
 void insertSort_1(vector<int> &v,int beginIndex,int endIndex);
 
+void insertionsort20201130(vector<int>&v);
+void insertionsort20201130_v1(vector<int>&v);
+
 void insertionSort(vector<int>&v);
 
 int main(int argc, const char * argv[]) {
@@ -45,7 +48,9 @@ int main(int argc, const char * argv[]) {
 //        insertSort_v2(v1);
 //        insertSort(v1,0,(int)v1.size()-1);
         // insertSort_1(v1,0,(int)v1.size()-1);
-        insertionSort(v1);
+        // insertionSort(v1);
+        // insertionsort20201130(v1);
+        insertionsort20201130_v1(v1);
         printf("v1:");
         print(v1);
         printf("\n");
@@ -148,4 +153,66 @@ void insertionSort(vector<int>&v){
             swap(v[j],v[j-1]);
         }
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//20201130 exercise
+void insertionsort20201130(vector<int>&v){
+    int len=v.size();
+    for(int i=1;i<len;++i){
+        for(int j=i;j>0;--j){
+            if(v[j]<v[j-1]){
+                swap(v[j],v[j-1]);
+            }
+        }
+    }
+
+}
+//small improvement
+void insertionsort20201130_v1(vector<int>&v){
+    int len=v.size();
+    for(int i=1;i<len;++i){
+        for(int j=i;j>0&&v[j]<v[j-1];--j){
+            swap(v[j],v[j-1]);
+        }
+    }
+
 }

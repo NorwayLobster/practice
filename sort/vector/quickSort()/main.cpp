@@ -30,6 +30,9 @@ pair<int,int>  partition_v3(vector<int> & v, int left, int right);
 int partition_v5(vector<int> & v, int left, int right);
 int partition_A(vector<int> & v, int left, int right);
 int partition_B(vector<int> & v, int left, int right);
+
+int partition20201130 (vector<int>&v,int left,int right);
+void quicksort20201130(vector<int>&v,int left,int right);
     
 void generateRandomArray(vector<int> &v, int maxSize, int maxValue);
 void print(vector<int> & v);
@@ -54,7 +57,8 @@ int main(int argc, const char * argv[]) {
 //        print(v2);
         sort(v1.begin(),v1.end());
         // quicksort(v2, 0, (int)v.size()-1);
-        quicksort_v1(v2, 0, (int)v.size()-1);
+        // quicksort_v1(v2, 0, (int)v.size()-1);
+        quicksort20201130(v2, 0, (int)v.size()-1);
         // quickSort_v1_iteration(v2, 0, (int)v.size()-1);
 //        quickSort_v1(v2, 0, (int)v.size()-1);
 //        quickSort_v2(v2, 0, (int)v.size()-1);
@@ -382,4 +386,25 @@ void quicksort_v1(vector<int>&v, int left,int right){
     int pivotIndex=mypartition(v,left,right);
     quicksort(v,left,pivotIndex);//fatal error 的原因 
     quicksort(v,pivotIndex+1,right);
+}
+
+
+//20201130 exercise
+int partition20201130 (vector<int>&v,int left,int right){
+    int pivot=v[left];
+    int boudaryIndex=left;
+    for(int i=left+1;i<=right;++i){
+        if(v[i]<pivot){
+            swap(v[i],v[++boudaryIndex]);
+        }
+    }
+    swap(v[left],v[boudaryIndex]);
+    return boudaryIndex;
+}
+
+void quicksort20201130(vector<int>&v,int left,int right){
+    if(left>=right) return ;
+    int pivotIndex=partition20201130 (v,left,right);
+    quicksort20201130(v,left,pivotIndex-1);
+    quicksort20201130(v,pivotIndex+1,right);
 }
