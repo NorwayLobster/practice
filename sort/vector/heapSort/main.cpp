@@ -235,7 +235,7 @@ void print(vector<int> & v)
 
 //exercise 202021130
 
-void percolateDown202021130(vector<int>&v,int partentIndex, int rightIndex){
+void percolateDown202021130(vector<int>&v,int partentIndex, int rightIndex){//[partentIndex,rightIndex]
     // int len=v.size();
     int childrenIndex=2*partentIndex+1;
     while(childrenIndex<=rightIndex){
@@ -256,7 +256,7 @@ void make_max_heap(vector<int>&v){
     for(int i=len/2+1;i>=0;--i){
     // for(int i=len/2+1;i>0;--i){//bug
     // for(int i=len/2+1;i>0;++i){//fatal error:
-        percolateDown202021130(v,i,len-1);
+        percolateDown202021130(v,i,len-1);//[i,len-1]
     }
 }
 
