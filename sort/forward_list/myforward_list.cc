@@ -2,14 +2,14 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2020-12-02 10:15:48
  * @LastEditors: ChengWang
- * @LastEditTime: 2020-12-02 11:08:24
+ * @LastEditTime: 2020-12-02 11:16:14
  * @FilePath: /practice/sort/forward_list/myforward_list.cc
  */
 
 #include "myforward_list.hpp"
 
 myForwardList::myForwardList()
-:_ListHead,
+:_ListHead()
 ,_pListHead(&_ListHead)
 {
   cout<<"myForwardList::myForwardList()"<<endl;
