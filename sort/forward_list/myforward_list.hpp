@@ -2,7 +2,7 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2020-12-02 10:12:20
  * @LastEditors: ChengWang
- * @LastEditTime: 2020-12-02 11:06:56
+ * @LastEditTime: 2020-12-02 12:19:31
  * @FilePath: /practice/sort/forward_list/myforward_list.hpp
  */
 
@@ -44,9 +44,10 @@ class myForwardList{
     // void erase_after();
     size_t size();
     void clear();
+    Node *_pListHead;
   private:
   Node _ListHead;
-  Node *_pListHead;
+  size_t _size;
 };
 
 // class iterator{ };
