@@ -2,7 +2,7 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2020-12-02 10:12:20
  * @LastEditors: ChengWang
- * @LastEditTime: 2020-12-02 10:53:39
+ * @LastEditTime: 2020-12-02 11:06:56
  * @FilePath: /practice/sort/forward_list/myforward_list.hpp
  */
 
@@ -17,7 +17,7 @@ struct Node{
 	Node * _next;
 	~Node() {cout<<"~Node()"<<" _val:"<<_val<<endl;}
 	Node()
-		:_val(100)
+		:_val(0)
 		,_next(NULL) 
 	{cout<<"Node()"<<endl;}
 	Node(int ele)
@@ -45,6 +45,7 @@ class myForwardList{
     size_t size();
     void clear();
   private:
+  Node _ListHead;
   Node *_pListHead;
 };
 

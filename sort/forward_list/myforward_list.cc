@@ -2,14 +2,15 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2020-12-02 10:15:48
  * @LastEditors: ChengWang
- * @LastEditTime: 2020-12-02 10:58:18
+ * @LastEditTime: 2020-12-02 11:08:24
  * @FilePath: /practice/sort/forward_list/myforward_list.cc
  */
 
 #include "myforward_list.hpp"
 
 myForwardList::myForwardList()
-:_pListHead(NULL)
+:_ListHead,
+,_pListHead(&_ListHead)
 {
   cout<<"myForwardList::myForwardList()"<<endl;
 }
@@ -29,11 +30,13 @@ myForwardList::~myForwardList(){
   _pListHead=NULL;
 }
 void myForwardList::push_front(int element){
+  cout<<"myForwardList::push_front()"<<endl;
   Node* pnew=new Node(element);
   pnew->_next=_pListHead->_next;
   _pListHead->_next=pnew;
 }
 void myForwardList::print(){
+  cout<<"myForwardList::print()"<<endl;
   Node *head=_pListHead->_next;
 	if(NULL==head) return ;
 	while(NULL!=head){
