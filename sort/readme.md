@@ -12,3 +12,7 @@
     std::forward_list: 单循环链表
     std::forward_list.sort(): N*logN????
     std::list.sort(): N*logN
+# 链表的排序： 单链表的排序 比 双向链表 的难
+    1.交换数据: 较简单
+    2.交换结点: 较难
+
