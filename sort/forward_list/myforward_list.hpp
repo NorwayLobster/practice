@@ -51,7 +51,11 @@ class myForwardList{
     size_t _size;
 };
 
+//
 // class iterator{ };
+    // Node& operator++(){}
+    // Node operator++(int);
+
 #endif 
 
 // void buildList(Node**head,int i){

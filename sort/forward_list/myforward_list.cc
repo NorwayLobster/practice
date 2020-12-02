@@ -55,7 +55,8 @@ void myForwardList::print(){
   Node *head=_pListHead->_next;
 	if(NULL==head) return ;
 	while(NULL!=head){
-		cout<<head->_val<<" ";
+		cout<<head->_val<<","<<endl;
+    cout<<head<<endl;
 		head=head->_next;
 	}
 	cout<<endl;
