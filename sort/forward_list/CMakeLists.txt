@@ -8,7 +8,8 @@ add_definitions("-Wall -g")
 # add_executable(forward_list_bin quicksort_forwardlist.cc myforward_list.cc)
 # add_executable(forward_list_bin selectionsort_forwardlist.cc myforward_list.cc)
 # add_executable(forward_list_bin mergesort_forwardlist.cc myforward_list.cc)
+# add_executable(forward_list_bin insertionsort_forwardlist.cc myforward_list.cc)
 
-add_executable(forward_list_bin insertionsort_forwardlist.cc myforward_list.cc)
+add_executable(forward_list_bin bubblesort_forwardlist.cc myforward_list.cc)
 
 target_include_directories(forward_list_bin PUBLIC ${PROJECT_SOURCE_DIR})
