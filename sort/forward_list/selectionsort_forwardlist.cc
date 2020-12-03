@@ -2,7 +2,7 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2020-12-02 07:46:56
  * @LastEditors: ChengWang
- * @LastEditTime: 2020-12-02 15:18:54
+ * @LastEditTime: 2020-12-03 04:10:44
  * @FilePath: /practice/sort/forward_list/selectionsort_forwardlist.cc
  */
 
@@ -23,11 +23,13 @@ Node* findMinNodePrevOne(Node*p){
   return preNode;
 }
 
-void selectionsort(myForwardList& fl){
-    Node* dummy=fl.getListHead();
+// void selectionsort(myForwardList& fl){
+Node* selectionsort(Node* head){
+    // Node* dummy=fl.getListHead();
     Node sorted;
     Node* cur1=&sorted;
-    Node* cur=dummy->_next;
+    // Node* cur=dummy->_next;
+    Node* cur=head;
     Node* minPrevNode;
     Node* min;
     while(cur!=NULL){
@@ -43,7 +45,8 @@ void selectionsort(myForwardList& fl){
       cur1->_next=min;
       cur1=cur1->_next;
     }
-    dummy->_next=sorted._next;
+    // dummy->_next=sorted._next;
+    return sorted._next;
 }
 
 int main(){
@@ -63,8 +66,6 @@ int main(){
   }
   fl.print();
   cout<<"size:"<<fl.size()<<endl;
-  selectionsort(fl);
-  fl.print();
-  cout<<"size:"<<fl.size()<<endl;
+  Node* newhead = selectionsort(fl.getListHead()->_next);
   return 0;
 }

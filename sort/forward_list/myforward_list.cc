@@ -2,7 +2,7 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2020-12-02 10:15:48
  * @LastEditors: ChengWang
- * @LastEditTime: 2020-12-02 13:06:13
+ * @LastEditTime: 2020-12-03 01:47:33
  * @FilePath: /practice/sort/forward_list/myforward_list.cc
  */
 
@@ -55,8 +55,8 @@ void myForwardList::print(){
   Node *head=_pListHead->_next;
 	if(NULL==head) return ;
 	while(NULL!=head){
-		cout<<head->_val<<","<<endl;
-    cout<<head<<endl;
+		cout<<head->_val<<",";
+    cout<<head<<";";
 		head=head->_next;
 	}
 	cout<<endl;
