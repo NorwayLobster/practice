@@ -2,8 +2,8 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2020-12-16 12:45:08
  * @LastEditors: ChengWang
- * @LastEditTime: 2020-12-19 02:24:31
- * @FilePath: /practice/algorithm/dp/knapsackUnlimitedItems.cc
+ * @LastEditTime: 2020-12-26 21:45:41
+ * @FilePath: /practice/algorithm/dp/Unboundedknapsack.cc
  */
 
 #include <iostream>
@@ -32,7 +32,7 @@ void knapsack_v1(vector<vector<int>>& dp, vector<vector<int>>& info,vector<int>&
 }
 
 
-//完全背包
+//完全背包: Unbounded Knapsack
 //time complexity: O(N*b*(j/weight[i]))
 void knapsack(vector<vector<int>>& dp, vector<vector<int>>& info,vector<int>& value, vector<int>&weight,int n, int b){
     for(int i=1;i<=n;i++){//只考虑前i个物品
