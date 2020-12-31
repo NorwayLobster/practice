@@ -6,7 +6,9 @@
     "regex": "cpp",
     "ostream": "cpp",
     "deque": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "vector": "cpp",
+    "iostream": "cpp"
   },
   "C_Cpp.default.configurationProvider": "go2sh.cmake-integration"
 }
