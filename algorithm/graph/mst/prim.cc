@@ -2,7 +2,7 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2019-12-17 15:31:39
  * @LastEditors: ChengWang
- * @LastEditTime: 2021-01-02 06:55:39
+ * @LastEditTime: 2021-01-02 09:59:10
  * @FilePath: /practice/algorithm/graph/mst/prim.cc
  */
 //
@@ -23,39 +23,63 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <climits>//INT_MAX
 using namespace std;
 //note: MST is just for undirected graph, not for directed graph
 //图中的边节点会有一半的冗余
 //greedy 
 
 void prim(const Graph& g){// very similar to dijkstra
-    DisjointSet ds(g._vertexNum);
-    vector<Edge> v_edges;
-    vector<Edge> MST;//MST由边组成
-    int mincost=0;//MST's cost
     cout<<"g._vertexNum:"<<g._vertexNum<<endl;
-    for(int u=0;u<g._vertexNum;++u){
-        EdgeNode* cur=g._vertexList[u].headOfNeighbours;
-        while(nullptr!=cur){
-            if(u < cur->v){//无向图防止重复边进入
-                v_edges.push_back(Edge(u,cur->v,cur->weight));
+    vector<bool> MST(g._vertexNum,false);//节点是否在MST
+    vector<int> lowCost(g._vertexNum, INT_MAX);//U 与 U-V集合的目前为止最短距离距离
+    vector<int> prev(g._vertexNum,0);// 更新构成U与U-V集合最短距离的prev节点
+
+    int mst=0;////mst's cost
+    //init
+    int cur=0;//mst中第一个节点
+    lowCost[cur]=0;//set 0 cost to MST
+    MST[cur]=true;//add 0 into mst
+    mst+=lowCost[cur];//caculate mincost
+
+    //init: update info of node connect to cur node
+    EdgeNode* pcur=g._vertexList[cur].headOfNeighbours;
+    while(nullptr!=pcur){
+        int neighbour=pcur->v;
+        if(false==MST[neighbour] && pcur->weight < lowCost[neighbour]){
+            lowCost[neighbour]=pcur->weight;
+            prev[neighbour]=cur;
+        }
+        pcur=pcur->next;
+    }
+
+    for(int i=1;i<g._vertexNum;++i){// 在找出g._vertexNum-1个节点
+      //part1: select min cost node as cur 
+        int mincost=INT_MAX;//
+        for(int j=0;j<g._vertexNum;++j){
+          if(false==MST[j] && lowCost[j] < mincost){
+            mincost=lowCost[j];
+            cur=j;
+          }
+        }
+
+      //part2: store cur info
+        mst+=lowCost[cur];//caculate mincost
+        MST[cur]=true;//add cur into mst
+        cout<<"cur:"<<cur<<endl;
+        cout<<"mst:"<<mst<<endl;
+
+      //part3: update info for next iteration
+        EdgeNode* pcur=g._vertexList[cur].headOfNeighbours;
+        while(nullptr!=pcur){
+            int neighbour=pcur->v;
+            if(false==MST[neighbour] && pcur->weight < lowCost[neighbour] ){//update info of node connect to cur node
+                lowCost[neighbour]=pcur->weight;
+                prev[neighbour]=cur;
             }
-            cur=cur->next;
+            pcur=pcur->next;
         }
     }
-    // for(auto edge:v_edges){ cout<<"edge:"<<edge.u<<","<<edge.v<<","<<edge.w<<endl; }
-    sort(v_edges.begin(),v_edges.end(),[](const Edge& left, const Edge& right)->bool{return left.w<right.w;});
-    // for(auto edge:v_edges){ cout<<"after edge:"<<edge.u<<","<<edge.v<<","<<edge.w<<endl; }
-    for(int i=0;i<(int)v_edges.size();++i){
-        cout<<"edges:"<<v_edges[i].u<<","<<v_edges[i].v<<","<<v_edges[i].w<<endl;
-        int root1=ds.Find(v_edges[i].u);
-        int root2=ds.Find(v_edges[i].v);
-        if(root1==root2) continue;
-        ds.Union(root1,root2);
-        mincost+=v_edges[i].w;
-        MST.push_back(v_edges[i]);
-    }
-    cout<<"mincost:"<<mincost<<endl;
 }
 
 int main(){

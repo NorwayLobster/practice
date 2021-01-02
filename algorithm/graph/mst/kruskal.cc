@@ -2,7 +2,7 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2019-12-17 15:31:39
  * @LastEditors: ChengWang
- * @LastEditTime: 2021-01-02 07:15:30
+ * @LastEditTime: 2021-01-02 07:54:32
  * @FilePath: /practice/algorithm/graph/mst/kruskal.cc
  */
 //
@@ -29,7 +29,7 @@ using namespace std;
 //图中的边节点会有一半的冗余
 //greedy 
 
-//v1: sorted edges array
+//v1: sorted edges array + 并查集
 void kruskal(const Graph& g){
     DisjointSet ds(g._vertexNum);
     vector<Edge> v_edges;
@@ -66,7 +66,8 @@ struct cmp{
       return left.w>right.w;
   }
 };
-//v2: pq
+
+//v2: pq + 并查集
 void kruskal_v2(const Graph& g){
     DisjointSet ds(g._vertexNum);
     priority_queue<Edge,vector<Edge>, cmp> pq_edges;//
