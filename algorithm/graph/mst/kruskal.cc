@@ -2,8 +2,8 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2019-12-17 15:31:39
  * @LastEditors: ChengWang
- * @LastEditTime: 2021-01-02 06:23:01
- * @FilePath: /practice/algorithm/graph/MST/kruskal.cc
+ * @LastEditTime: 2021-01-02 06:46:51
+ * @FilePath: /practice/algorithm/graph/mst/kruskal.cc
  */
 //
 //  main.cpp
