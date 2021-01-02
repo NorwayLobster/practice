@@ -2,7 +2,7 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2020-12-31 14:22:10
  * @LastEditors: ChengWang
- * @LastEditTime: 2021-01-02 06:46:24
+ * @LastEditTime: 2021-01-02 07:11:45
  * @FilePath: /practice/algorithm/graph/graph.hpp
  */
 
@@ -24,6 +24,12 @@ struct Edge{
   ,v(b)
   ,w(c)
   {}
+  bool operator<(const Edge& right){
+    return  w<right.w;
+  }
+  bool operator>(const Edge& right){
+    return  w>=right.w;
+  }
 };
 struct EdgeNode{
   int v;

@@ -16,3 +16,13 @@ target_include_directories(kruskal_bin
      PUBLIC
           ${PROJECT_SOURCE_DIR}
 )
+
+add_executable(prim_bin
+     graph.cc
+     mst/prim.cc
+)
+
+target_include_directories(prim_bin
+     PUBLIC
+          ${PROJECT_SOURCE_DIR}
+)

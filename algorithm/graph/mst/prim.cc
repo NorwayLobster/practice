@@ -2,8 +2,8 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2019-12-17 15:31:39
  * @LastEditors: ChengWang
- * @LastEditTime: 2021-01-02 07:15:30
- * @FilePath: /practice/algorithm/graph/mst/kruskal.cc
+ * @LastEditTime: 2021-01-02 06:55:39
+ * @FilePath: /practice/algorithm/graph/mst/prim.cc
  */
 //
 //  main.cpp
@@ -23,14 +23,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <queue>
 using namespace std;
 //note: MST is just for undirected graph, not for directed graph
 //图中的边节点会有一半的冗余
 //greedy 
 
-//v1: sorted edges array
-void kruskal(const Graph& g){
+void prim(const Graph& g){// very similar to dijkstra
     DisjointSet ds(g._vertexNum);
     vector<Edge> v_edges;
     vector<Edge> MST;//MST由边组成
@@ -60,42 +58,6 @@ void kruskal(const Graph& g){
     cout<<"mincost:"<<mincost<<endl;
 }
 
-
-struct cmp{
-  bool operator()(const Edge& left, const Edge& right){
-      return left.w>right.w;
-  }
-};
-//v2: pq
-void kruskal_v2(const Graph& g){
-    DisjointSet ds(g._vertexNum);
-    priority_queue<Edge,vector<Edge>, cmp> pq_edges;//
-    vector<Edge> MST;//MST由边组成
-    int mincost=0;//MST's cost
-    cout<<"g._vertexNum:"<<g._vertexNum<<endl;
-    for(int u=0;u<g._vertexNum;++u){
-        EdgeNode* cur=g._vertexList[u].headOfNeighbours;
-        while(nullptr!=cur){
-            if(u < cur->v){//无向图防止重复边进入
-                pq_edges.push(Edge(u,cur->v,cur->weight));
-            }
-            cur=cur->next;
-        }
-    }
-    while(!pq_edges.empty()){
-        Edge cur=pq_edges.top();
-        cout<<"pq, cur.w:"<<cur.w<<endl;
-        pq_edges.pop();
-        int root1=ds.Find(cur.u);
-        int root2=ds.Find(cur.v);
-        if(root1==root2) continue;
-        ds.Union(root1,root2);
-        mincost+=cur.w;
-        MST.push_back(cur);
-    }
-    cout<<"mincost:"<<mincost<<endl;
-}
-
 int main(){
   fstream fs("../input.txt");
   stringstream ss; 
@@ -120,7 +82,6 @@ int main(){
   }
   cout<<"size:"<<inputArray.size()<<endl;
   Graph G(numOfVertex,inputArray);
-  // kruskal(G);
-  kruskal_v2(G);
+  prim(G);
   return 0;
 }
