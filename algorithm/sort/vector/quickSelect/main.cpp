@@ -11,7 +11,14 @@
 #include <vector>
 #include <stack>
 #include <utility>
+#include <cassert>
+#include <algorithm>
+#include <iterator>
 using namespace std;
+
+int partition_20210117(vector<int>& nums, int left, int right);
+void quickselect_20210117(vector<int>& nums, int k, int left, int right);
+int findKthLargest(vector<int>& nums, int k);
 
 void quickSelect(vector<int>&v,int k);
 int partition_iter(vector<int>&v,int left,int right);
@@ -30,7 +37,7 @@ void insertSort(vector<int> &v,int beginIndex,int endIndex);
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    std::cout << "Hello, quickSort!\n";
+    std::cout << "Hello, quickSelect!\n";
 //    srand((unsigned int)time(NULL));
     srand((unsigned)time(NULL));
     int testTime = 100;
@@ -55,7 +62,8 @@ int main(int argc, const char * argv[]) {
 //        quickSelect(v2, nth, 0, (int)v2.size()-1);
 //        quickSelect_iteration(v2,nth,0,(int)v2.size()-1);
 //error:          int Nth=select(v2,0,(int)v2.size()-1,nth);
-          quickSelect(v2,nth);
+        //   quickSelect(v2,nth);
+          findKthLargest(v2,nth+1);
 //        print(v1);
 //        print(v2);
         printf("%dth:%d\n",nth,v1[nth]);
@@ -275,4 +283,48 @@ void insertSort(vector<int> &v,int beginIndex,int endIndex){
         for(int j=i;j>beginIndex && v[j]<v[j-1];--j)
             swap(v[j],v[j-1]);
     }
+}
+
+
+
+
+// 20210117 exercise
+//time, O(len*logk), space, O(k)
+
+
+int partition_20210117(vector<int>& nums, int left, int right){
+    srand(time(nullptr));
+    int rnd_index=left+rand()%(right-left+1);
+    std::swap(nums[rnd_index], nums[left]);
+    int pivot=nums[left];
+    int boundray_index=left;
+    for(int i=left+1; i<=right;++i){
+        if(nums[i]<pivot){
+            swap(nums[i],nums[++boundray_index]);
+        }
+    }
+    swap(nums[left], nums[boundray_index]);//把最右边的一个小于pivot的元素 和v[left]交换
+    // fatal error: swap(nums[left], nums[++boundray_index]);
+    return boundray_index;//pivot_index
+}
+
+void quickselect_20210117(vector<int>& nums, int k, int left, int right){
+    if(left>=right){
+        return;
+    }
+    int pivot_index=partition_20210117(nums,left, right);
+    if(pivot_index==k){
+        return;
+    }else if(pivot_index<k){
+        quickselect_20210117(nums,k,pivot_index+1, right);
+    }else{
+        quickselect_20210117(nums,k,left, pivot_index-1);
+    }
+}
+
+int findKthLargest(vector<int>& nums, int k) {
+    int len=nums.size();
+    // if(k>len)
+    quickselect_20210117(nums,k-1,0,len-1);
+    return nums[k-1];
 }
