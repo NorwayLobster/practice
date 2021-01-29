@@ -2,8 +2,8 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2020-12-16 12:45:08
  * @LastEditors: ChengWang
- * @LastEditTime: 2020-12-26 21:45:41
- * @FilePath: /practice/algorithm/dp/Unboundedknapsack.cc
+ * @LastEditTime: 2021-01-27 11:32:37
+ * @FilePath: /practice/algorithm/dp/knapsack/Unboundedknapsack.cc
  */
 
 #include <iostream>
@@ -51,6 +51,8 @@ void knapsack(vector<vector<int>>& dp, vector<vector<int>>& info,vector<int>& va
       }
     }
 }
+
+
 
 void trace(vector<vector<int>>& info){
 

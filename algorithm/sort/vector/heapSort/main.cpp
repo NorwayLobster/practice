@@ -274,3 +274,49 @@ void heapsort(vector<int>&v){
     make_max_heap(v);//have bugs
     sort_heap(v);//correct
 }
+
+
+//20210128
+// index: 0, 1, 2, 3, 4
+// leftchild=2*parent+1;
+// rightchild=2*parent+1;
+
+// parent=floor((parent-1)/2);
+
+//floyd: from bottom to top and percolateDown
+void percolateDown(vector<int>& v, int curIndex, int lastElementIndex){
+    int child=2*curIndex+1;
+    while(child<=lastElementIndex){
+        if(child+1<=lastElementIndex && v[child]<v[child+1]){
+            child++;
+        }
+        if(v[child]>v[curIndex]){
+            swap(v[child], v[curIndex]);
+        }else{
+            break;
+        }
+        curIndex=child; 
+        child=2*curIndex+1;
+    }
+
+}
+void make_heap(vector<int>& v){
+    int len=v.size();
+    int lastElementIndex=len-1;
+    int lastParentIndex=(lastElementIndex-1)/2;
+    for(int i=lastParentIndex;i>=0;i--){
+       percolateDown(v, i, lastElementIndex);
+    } 
+
+}
+void sort_heap(vector<int>& v){
+    int len=v.size();
+    for(int i=len-1;i>=0; i--){
+        swap(v[0], v[i]);
+        percolateDown(v,0,i-1);//
+    }
+}
+int heapsort_ex1(vector<int>& v){
+    make_heap(v);
+    sort_heap(v);
+}
