@@ -2,7 +2,7 @@
  * @Author: ChengWang(cheng.wang.801@gmail.com)
  * @Date: 2021-01-30 20:35:45
  * @LastEditors: ChengWang
- * @LastEditTime: 2021-01-31 02:07:28
+ * @LastEditTime: 2021-01-31 04:49:46
  * @FilePath: /practice/algorithm/interview/utf-8&文件逆序输出-百度二面.cc
  */
 #include<iostream>
@@ -16,6 +16,7 @@ int main(){
   //\n
   //line:  
 
+//  std::setlocale(LC_ALL, "en_US.UTF-8");//??
   // wstring line1="您好";
   // cout<<line1<<endl;
   // for(auto iter1=line1.rbegin();iter1!=line1.rend();++iter1){
