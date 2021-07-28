@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include <vector>
+#include <iterator>
+#include <algorithm>
 
 using namespace std;
 
@@ -23,6 +25,7 @@ void bubbleSort_6(vector<int> & v);
 void bubble_sort(vector<int> & v);
 void print(const vector<int> &);
 void bubblesort20201130(vector<int>&v);
+void bubblesort20210728(vector<int>&v);
 
 int main(int argc, const char * argv[]) {
     //    srand(time(NULL));
@@ -57,7 +60,8 @@ int main(int argc, const char * argv[]) {
         //        bubbleSort_5(v2);
 //        bubbleSort_6(v2);
         // bubble_sort(v2);
-        bubblesort20201130(v2);
+        // bubblesort20201130(v2);
+        bubblesort20210728(v2);
         printf("after v2:");
         print(v2);
         for(int i=0;i<v1.size();++i){
@@ -278,5 +282,22 @@ void bubblesort20201130(vector<int>&v){
         }
         if(sorted)
             break;
+    }
+}
+
+void bubblesort20210728(vector<int>&v){
+    int len=v.size();
+    bool sorted=false;
+    for(int i=len-1;i>=0;i--){
+        sorted=true;
+        for(int j=0;j<i;j++){
+            if(v[j]<v[j+1]){
+                sorted=false;
+                swap(v[j],v[j+1]);
+            }
+        }
+        if(sorted){
+            break;
+        }
     }
 }
