@@ -63,3 +63,42 @@ int main(){
 }
 
 
+void myPecolateDown(vector<int>&v, int curIndex, int lastIndex){
+	int parentIndex=curIndex;
+	int childIndex=2*curIndex+1;
+	while(childIndex<=lastIndex){
+		if(childIndex+1<=lastIndex && v[childIndex]<v[childIndex+1]){
+			childIndex++;
+		}
+		if(v[childIndex]<v[parentIndex]){
+			break;
+		}
+		swap(v[childIndex],v[parentIndex]);
+		parentIndex=childIndex;
+		childIndex=2*childIndex+1;
+	}
+}
+
+void my_make_heap(vector<int>&v){
+	int len=v.size();
+	int lastIndex=len-1;
+	int lastParentIndex=(lastIndex-1)/2;
+	for(int i=lastParentIndex;i>=0;i--){
+		myPercolateDown(v, i, lastIndex);
+	}
+}
+
+void my_sort_heap(vector<int>& v){
+	int len=v.size();
+	for(int i=len-1;i>=0;++i){
+		swap(v[0],v[i]);
+		percolateDown(v,0,i-1);
+	}
+}
+void myHeapSort(vector<int>& v){
+	int len=v.size();
+	my_make_heap(v);
+	my_sort_heap(v);
+}
+
+

@@ -279,7 +279,7 @@ void heapsort(vector<int>&v){
 //20210128
 // index: 0, 1, 2, 3, 4
 // leftchild=2*parent+1;
-// rightchild=2*parent+1;
+// rightchild=leftchild+1;
 
 // parent=floor((parent-1)/2);
 
