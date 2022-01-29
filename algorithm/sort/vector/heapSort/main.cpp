@@ -307,7 +307,6 @@ void make_heap(vector<int>& v){
     for(int i=lastParentIndex;i>=0;i--){
        percolateDown(v, i, lastElementIndex);
     } 
-
 }
 void sort_heap(vector<int>& v){
     int len=v.size();
