@@ -9,6 +9,11 @@ using std::cout;
 using std::endl;
 int main(int argc, char**argv)
 {
-	cout<<"argc="<<argc<<endl;
+    cout<<"argc="<<argc<<endl;
+    cout<<"argv:";
+    for( int i=0;i<argc;i++){
+       cout <<argv[i]<<",";
+    }
+    cout<<endl;
 	return 0;
 }

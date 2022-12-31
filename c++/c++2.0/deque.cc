@@ -5,7 +5,9 @@
  ///
  
 
-#include <bits/stdc++.h>
+//#include <bits/stdc++.h>
+#include <queue>
+#include <iostream>
 using namespace std;
 int main(){
 	deque<int> q;	
@@ -17,5 +19,13 @@ int main(){
 	q[2]=100011;
 	cout<<q[1]<<endl;
 	cout<<q[2]<<endl;
+    cout<<q.back()<<endl;
+    q.pop_back();
+    cout<<"len:"<<q.size()<<endl;
+    cout<<q.back()<<endl;
+    cout<<q.front()<<endl;
+    cout<<"len:"<<q.size()<<endl;
+    q.pop_front();
+    cout<<"len:"<<q.size()<<endl;
 	return 0;
 }
